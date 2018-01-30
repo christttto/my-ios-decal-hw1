@@ -3,7 +3,7 @@
 Before beginning this homework, you'll need to install **Xcode 9**. You can download it by heading over to https://itunes.apple.com/us/app/xcode/id497799835. 
 
 ### due date
-Monday, Feburary 5th at 6:30pm
+Monday, February 5th at 6:30pm
 
 ### submission 
 #### files to submit
