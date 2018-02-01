@@ -58,7 +58,7 @@ class Building {
 let building = Building()
 building.getCapacity() // 0
 let sodaHall = Building(name: "Soda Hall", capacity: 2356)
-building.getCapacity() // 2356
+sodaHall.getCapacity() // 2356
 let coryHall = Building(name: "Cory Hall", capacity: 3489)
 //building == sodaHall // false
 //sodaHall == sodaHall // true
