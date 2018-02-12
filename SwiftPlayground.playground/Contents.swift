@@ -13,7 +13,13 @@ import XCTest
 /// - Returns: true if every word in `words` is a palindrome, false otherwise
 func arePalindromes(_ words: [String]) -> Bool {
     // your code here
-    return false
+    for word in words{
+        if word != String(word.reversed()){
+            return false
+        }
+    }
+    
+    return true
 }
 //: ## Question 2: Optionals
 //: Someone stole a cookie from the GBC! At the crime scene, they found a blue book in the cookie jar with the SID `25346602` on it, no doubt it belonged to the criminal. The manager needs your help finding who it belongs to. Complete this function using the provided dictionary of SIDS called `studentIDNumbers` to find the culprit.
@@ -30,7 +36,20 @@ func findStudent(withStudentID sid: Int?, studentIDNumbers: [Int: String] = getS
     // Note: studentIDNumbers[KEY] always returns an optional since there may not be an entry for that KEY.
     
     // your code here
-    return nil
+    if let mySid = sid {
+        if let myStudent = studentIDNumbers[sid!]{
+            if mySid == 25346602 { return myStudent + " stole the cookie!"}
+            else {return nil}
+        }
+    }
+    else {
+        return nil
+    }
+    
+    
+    
+    
+    return nil;//studentIDNumbers[sid] + " stole the cookie!";
 }
 
 findStudent(withStudentID: 25346602) // the culprit!
@@ -51,7 +70,19 @@ class Building {
     
     //: Returns the `capacity` of the building. If the `capacity` is `nil`, then return `0`.
     func getCapacity() -> Int {
-        return -1 // your code here
+        //return capacity! // your code here
+        if let myCapacity = capacity {
+            
+            return myCapacity
+            
+        }
+        return 0
+    }
+}
+
+extension Building: Equatable{
+    static func == (lhs: Building, rhs: Building) -> Bool {
+        return lhs.name == rhs.name && lhs.capacity == rhs.capacity
     }
 }
 
@@ -61,7 +92,7 @@ let sodaHall = Building(name: "Soda Hall", capacity: 2356)
 sodaHall.getCapacity() // 2356
 let coryHall = Building(name: "Cory Hall", capacity: 3489)
 //building == sodaHall // false
-//sodaHall == sodaHall // true
+//sodaHal == sodaHal // true
 //sodaHall == coryHall // false
 //: ## Question 4: Closures
 //: `percentageString` creates a string represeting the given number as `Double`. This is such a simple function - let's change it to a closure! Rewrite `percentageString` as a closure in `percentageStringClosure`
@@ -69,10 +100,14 @@ func percentageString(forNumber x: Double) -> String {
     return String(x*10) + "%"
 }
 
-var percentageStringClosure = {
+var percentageStringClosure:(Double)->String = {
     // your code here
+    return String($0*10) + "%"
+    //return String($0*10)+"%"
 }
-//: Tests below (Ignore)
+
+
+
 class PlaygroundTests: XCTestCase {
     func testArePalindromes() {
         XCTAssertTrue(arePalindromes(["able was I ere I saw elba", "racecar"]), "`['able was I ere I saw elba', 'racecar']` should return true.")
@@ -104,5 +139,5 @@ class PlaygroundTests: XCTestCase {
     
 }
 //: ## Uncomment this line to run tests
-//PlaygroundTests.defaultTestSuite.run()
+PlaygroundTests.defaultTestSuite.run()
 
